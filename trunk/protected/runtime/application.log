@@ -1,0 +1,68 @@
+2011/10/06 17:06:17 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22007]: Invalid datetime format: 7 ERROR:  invalid input syntax for type date: "". The SQL statement executed was: INSERT INTO "departments" ("code", "name", "parent_id", "branch_id", "created_by", "created_on", "modified_by", "modified_on") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in D:\xampp\htdocs\birunierp\protected\controllers\DepartmentsController.php (72)
+in D:\xampp\htdocs\birunierp\index.php (13)
+2011/10/06 17:06:17 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22007]: Invalid datetime format: 7 ERROR:  invalid input syntax for type date: "". The SQL statement executed was: INSERT INTO "departments" ("code", "name", "parent_id", "branch_id", "created_by", "created_on", "modified_by", "modified_on") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in D:\xampp\htdocs\birunierp\framework\db\CDbCommand.php:336
+Stack trace:
+#0 D:\xampp\htdocs\birunierp\framework\db\ar\CActiveRecord.php(1017): CDbCommand->execute()
+#1 D:\xampp\htdocs\birunierp\framework\db\ar\CActiveRecord.php(781): CActiveRecord->insert(NULL)
+#2 D:\xampp\htdocs\birunierp\protected\controllers\DepartmentsController.php(72): CActiveRecord->save()
+#3 D:\xampp\htdocs\birunierp\framework\web\actions\CInlineAction.php(50): DepartmentsController->actionCreate()
+#4 D:\xampp\htdocs\birunierp\framework\web\CController.php(300): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\birunierp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\birunierp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 D:\xampp\htdocs\birunierp\framework\web\CController.php(1144): CFilter->filter(Object(CFilterChain))
+#8 D:\xampp\htdocs\birunierp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\xampp\htdocs\birunierp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\xampp\htdocs\birunierp\framework\web\CController.php(283): CFilterChain->run()
+#11 D:\xampp\htdocs\birunierp\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php(277): CController->run('create')
+#13 D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php(136): CWebApplication->runController('departments/cre...')
+#14 D:\xampp\htdocs\birunierp\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\birunierp\index.php(13): CApplication->run()
+#16 {main} REQUEST_URI=/birunierp/index.php/departments/create
+2011/10/30 23:10:34 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22007]: Invalid datetime format: 7 ERROR:  invalid input syntax for type date: "". The SQL statement executed was: INSERT INTO "users" ("user_name", "full_name", "password", "email_address", "parent_id", "branch_id", "created_by", "created_on", "modified_by", "modified_on") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9).
+in D:\xampp\htdocs\birunierp\protected\controllers\UsersController.php (72)
+in D:\xampp\htdocs\birunierp\index.php (13)
+2011/10/30 23:10:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22007]: Invalid datetime format: 7 ERROR:  invalid input syntax for type date: "". The SQL statement executed was: INSERT INTO "users" ("user_name", "full_name", "password", "email_address", "parent_id", "branch_id", "created_by", "created_on", "modified_by", "modified_on") VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9)' in D:\xampp\htdocs\birunierp\framework\db\CDbCommand.php:336
+Stack trace:
+#0 D:\xampp\htdocs\birunierp\framework\db\ar\CActiveRecord.php(1017): CDbCommand->execute()
+#1 D:\xampp\htdocs\birunierp\framework\db\ar\CActiveRecord.php(781): CActiveRecord->insert(NULL)
+#2 D:\xampp\htdocs\birunierp\protected\controllers\UsersController.php(72): CActiveRecord->save()
+#3 D:\xampp\htdocs\birunierp\framework\web\actions\CInlineAction.php(50): UsersController->actionCreate()
+#4 D:\xampp\htdocs\birunierp\framework\web\CController.php(300): CInlineAction->runWithParams(Array)
+#5 D:\xampp\htdocs\birunierp\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 D:\xampp\htdocs\birunierp\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 D:\xampp\htdocs\birunierp\framework\web\CController.php(1144): CFilter->filter(Object(CFilterChain))
+#8 D:\xampp\htdocs\birunierp\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\xampp\htdocs\birunierp\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\xampp\htdocs\birunierp\framework\web\CController.php(283): CFilterChain->run()
+#11 D:\xampp\htdocs\birunierp\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php(277): CController->run('create')
+#13 D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php(136): CWebApplication->runController('users/create')
+#14 D:\xampp\htdocs\birunierp\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\birunierp\index.php(13): CApplication->run()
+#16 {main} REQUEST_URI=/birunierp/index.php/users/create
+2011/12/01 12:17:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/default/index".' in D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php:281
+Stack trace:
+#0 D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php(136): CWebApplication->runController('admin/default/i...')
+#1 D:\xampp\htdocs\birunierp\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\birunierp\index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/birunierp/index.php/admin/default/index
+2011/12/01 14:16:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "departments/index".' in D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php:281
+Stack trace:
+#0 D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php(136): CWebApplication->runController('departments/ind...')
+#1 D:\xampp\htdocs\birunierp\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\birunierp\index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/birunierp/index.php/departments/index
+2011/12/01 15:16:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "departments/index".' in D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php:281
+Stack trace:
+#0 D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php(136): CWebApplication->runController('departments/ind...')
+#1 D:\xampp\htdocs\birunierp\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\birunierp\index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/birunierp/index.php/departments/index
+2011/12/01 15:17:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "departments/index".' in D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php:281
+Stack trace:
+#0 D:\xampp\htdocs\birunierp\framework\web\CWebApplication.php(136): CWebApplication->runController('departments/ind...')
+#1 D:\xampp\htdocs\birunierp\framework\base\CApplication.php(158): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\birunierp\index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/birunierp/index.php/departments/index
