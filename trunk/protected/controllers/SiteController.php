@@ -24,12 +24,41 @@ class SiteController extends Controller
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
+	 * display login form for non-authenticated users
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$model=new LoginForm;
+
+		// if it is ajax validation request
+		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+
+		// collect user input data
+		if(isset($_POST['LoginForm']))
+		{
+			$model->attributes=$_POST['LoginForm'];
+			// validate user input and redirect to the previous page if valid
+			if($model->validate() && $model->login()) {
+				// renders the view file 'protected/views/site/index.php'
+				// using the default layout 'protected/views/layouts/main.php'
+				$this->render('index');
+			} else {
+				// display the login form
+				$this->render('login',array('model'=>$model));
+			}
+		} 
+		else 
+		{
+			if (!Yii::app()->user->isGuest)
+				$this->render('index');
+			else {
+				$this->render('login',array('model'=>$model));
+			}
+		}
 	}
 
 	/**

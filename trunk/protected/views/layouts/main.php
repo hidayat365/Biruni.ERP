@@ -29,10 +29,10 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Departments', 'url'=>array('/master/departments/index'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Projects', 'url'=>array('/master/projects/index'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Accounts', 'url'=>array('/master/accounts/index'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Companies', 'url'=>array('/master/companies/index'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Orders', 'url'=>array('/orders/default'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Ledgers', 'url'=>array('/ledgers/default'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Master', 'url'=>array('/master/default'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Reports', 'url'=>array('/reports/default'), 'visible'=>!Yii::app()->user->isGuest),
 				//array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
@@ -48,7 +48,10 @@
 	<?php echo $content; ?>
 
 	<div id="footer">
-		Copyright &copy; 2011 by Biruni Software.		All Rights Reserved.<br/>
+		Copyright &copy; 2011-<?php print date('Y'); ?> 
+        by <?php print Yii::app()->params['developerName']; ?>.
+        All Rights Reserved.<br/>
+        Developed for <?php print Yii::app()->params['companyName']; ?>.
 		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 

@@ -1,15 +1,27 @@
 <?php
 $this->breadcrumbs=array(
-	$this->module->id,
+	'Master',
 );
 ?>
-<h1><?php echo $this->uniqueId . '/' . $this->action->id; ?></h1>
+<h1>Administrasi Master Data</h1>
 
 <p>
-This is the view content for action "<?php echo $this->action->id; ?>".
-The action belongs to the controller "<?php echo get_class($this); ?>"
-in the "<?php echo $this->module->id; ?>" module.
+	<strong><?php echo CHtml::link('Customer List',array('companies/customer')); ?></strong>
+    <br>Manage Customers list here, including add new customer, edit or delete existing customer data.
 </p>
 <p>
-You may customize this page by editing <tt><?php echo __FILE__; ?></tt>
+	<strong><?php echo CHtml::link('Supplier List',array('companies/supplier')); ?></strong>
+    <br>Manage Supplier list here, including add new supplier, edit or delete existing supplier data.
+</p>
+<p>
+	<strong><?php echo CHtml::link('Project List',array('projects')); ?></strong>
+    <br>Manage Project list here, including add new project, edit or delete existing project data.
+</p>
+<p>
+	<strong><?php echo CHtml::link('Deparetment List',array('departments')); ?></strong>
+    <br>Manage Department list here, including add new department, edit or delete existing department data.
+</p>
+<p>
+	<strong><?php echo CHtml::link('Chart of Accounts List',array('accounts')); ?></strong>
+    <br>Manage Chart of Account list here, including add new account, edit or delete existing account data.
 </p>
