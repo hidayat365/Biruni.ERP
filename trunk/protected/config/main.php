@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Biruni ERP',
+    'theme'=>'shadow_dancer',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
