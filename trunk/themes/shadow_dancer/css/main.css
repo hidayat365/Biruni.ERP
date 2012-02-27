@@ -23,6 +23,12 @@ body
 	text-align:right;
 }
 
+.topnav_text
+{
+	color: #FFFFFF!important;
+	font: normal 8pt Arial,Helvetica,sans-serif;
+	text-decoration:none;
+}
 .topnav_text a
 {
 	color: #FFFFFF!important;
@@ -68,22 +74,18 @@ body
 {
 	/*background:white url(bg.gif) repeat-x left top;background-image:url(http://inventory.simpson.com/dashboard-download/images/el_bg.png);*/
 	background-color:#333333;
-	height: 42px;
-	
-  
-
+	height: 35px;
 }
 
 #mainmenu ul
 {
 	padding:6px 20px 5px 20px;
 	margin:0px;
-	
 }
 
 #mainmenu ul li
 {
-	display: inline;
+  display: inline;
   background-attachment:initial;
   background-clip:initial;
   background-color:#333333;
@@ -113,7 +115,7 @@ body
   position:relative;
   padding-left:20px;
   padding-right:20px;
-  height:35px;
+  height:28px;
 }
 
 #mainmenu ul li.active
@@ -138,8 +140,8 @@ body
 	font-weight:bold;
 	text-decoration:none;
 	display:block;
-	height:35px;
-	padding-top:10px;
+	height:28px;
+	padding-top:7px;
 
 }
 
@@ -239,7 +241,7 @@ div.view
 div.breadcrumbs
 {
 	font-size: 0.9em;
-	padding: 15px 20px 15px 20px ;
+	padding: 7px 15px 5px 15px ;
 	border-bottom: 1px solid #CCCCCC;
 }
 

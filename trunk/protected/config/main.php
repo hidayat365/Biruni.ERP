@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Biruni ERP',
+	'name'=>'Kelsri ERP',
     'theme'=>'shadow_dancer',
 
 	// preloading 'log' component
@@ -22,12 +22,13 @@ return array(
 	'modules'=>array(
 		'admin',
         'master',
-		'orders',
-		'ledgers',
+		'order',
+		'ledger',
 		'sales',
 		'purchase',
 		'inventory',
 		'manufacturing',
+		'report',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'*birunierp#',
@@ -83,7 +84,7 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'admin@birunierp.com',
 		'productName'=>'Kelsri ERP',
-		'companyName'=>'Kelsri, PT',
+		'companyName'=>'PT Kelsri',
 		'developerName'=>'Arung Ruang',
 		'defaultPageSize'=>50,
 		'defaultDateFormat'=>'yy-mm-dd', //format tanggal untuk jquery ui datepicker

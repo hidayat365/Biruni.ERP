@@ -28,47 +28,38 @@
 
 <div class="container" id="page">
 	<div id="topnav">
-		<div class="topnav_text"><a href='#'>Home</a> | <a href='#'>My Account</a> | <a href='#'>Settings</a> | <a href='#'>Logout</a> </div>
+		<div class="topnav_text">
+            <?php echo CHtml::link('Home',Yii::app()->homeUrl); ?> |
+            <!--
+            <a href='#'>My Account</a> | 
+            <a href='#'>Settings</a> | 
+            -->
+			<?php echo Yii::app()->user->name; ?>
+            <?php echo CHtml::link('Logout',array('/site/logout')); ?> 
+		</div>
 	</div>
 	<div id="header">
-		<div id="logo"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logo.png"></img><?php //echo CHtml::encode(Yii::app()->name); ?></div>
+		<div id="logo">
+            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logo.png"></img>
+            <?php //echo CHtml::encode(Yii::app()->name); ?>
+        </div>
 	</div><!-- header -->
-    <!--
-<?php /*$this->widget('application.extensions.mbmenu.MbMenu',array(
-            'items'=>array(
-                array('label'=>'Dashboard', 'url'=>array('/site/index'),'itemOptions'=>array('class'=>'test')),
-                array('label'=>'Theme Pages',
-                  'items'=>array(
-                    array('label'=>'Graphs & Charts', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
-					array('label'=>'Form Elements', 'url'=>array('/site/page', 'view'=>'forms')),
-					array('label'=>'Interface Elements', 'url'=>array('/site/page', 'view'=>'interface')),
-					array('label'=>'Error Pages', 'url'=>array('/site/page', 'view'=>'Demo 404 page')),
-					array('label'=>'Calendar', 'url'=>array('/site/page', 'view'=>'calendar')),
-					array('label'=>'Buttons & Icons', 'url'=>array('/site/page', 'view'=>'buttons_and_icons')),
-                  ),
-                ),
-                array('label'=>'Gii Generated Module',
-                  'items'=>array(
-                    array('label'=>'Items', 'url'=>array('/theme/index')),
-                    array('label'=>'Create Item', 'url'=>array('/theme/create')),
-					array('label'=>'Manage Items', 'url'=>array('/theme/admin')),
-                  ),
-                ),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-            ),
-    )); */?> --->
+
 	<div id="mainmenu">
-    
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Dashboard', 'url'=>array('/site/index')),
+				array('label'=>'Orders', 'url'=>array('/orders/default'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Ledgers', 'url'=>array('/ledgers/default'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Master', 'url'=>array('/master/default'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Reports', 'url'=>array('/reports/default'), 'visible'=>!Yii::app()->user->isGuest),
+				/*
 				array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
 				array('label'=>'Form', 'url'=>array('/site/page', 'view'=>'forms')),
 				array('label'=>'Interface', 'url'=>array('/site/page', 'view'=>'interface')),				
 				array('label'=>'Buttons & Icons', 'url'=>array('/site/page', 'view'=>'buttons_and_icons')),
 				array('label'=>'Error Pages', 'url'=>array('/site/page', 'view'=>'Demo 404 page')),
+				*/
 			),
 		)); ?>
 	</div> <!--mainmenu -->
