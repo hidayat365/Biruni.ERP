@@ -1,6 +1,6 @@
 <?php
 
-class CompaniesController extends Controller
+class DepartmentController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -27,7 +27,7 @@ class CompaniesController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view','customer','supplier','create','update'),
+				'actions'=>array('index','view','create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -57,14 +57,14 @@ class CompaniesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Companies;
+		$model=new Department;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Companies']))
+		if(isset($_POST['Department']))
 		{
-			$model->attributes=$_POST['Companies'];
+			$model->attributes=$_POST['Department'];
 			$model->branch=Yii::app()->session->get('branch_id');
 			$model->created_by=Yii::app()->session->get('user_id');
 			$model->created_on=date('Y-m-d H:i:s');
@@ -91,9 +91,9 @@ class CompaniesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Companies']))
+		if(isset($_POST['Department']))
 		{
-			$model->attributes=$_POST['Companies'];
+			$model->attributes=$_POST['Department'];
 			$model->modified_by=Yii::app()->session->get('user_id');
 			$model->modified_on=date('Y-m-d H:i:s');
 			if($model->save())
@@ -130,30 +130,8 @@ class CompaniesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Companies');
+		$dataProvider=new CActiveDataProvider('Department');
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
-	 * Lists all customers.
-	 */
-	public function actionCustomer()
-	{
-		$dataProvider=new CActiveDataProvider('Companies');
-		$this->render('customer',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
-	 * Lists all customers.
-	 */
-	public function actionSupplier()
-	{
-		$dataProvider=new CActiveDataProvider('Companies');
-		$this->render('supplier',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
@@ -163,10 +141,10 @@ class CompaniesController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Companies('search');
+		$model=new Department('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Companies']))
-			$model->attributes=$_GET['Companies'];
+		if(isset($_GET['Department']))
+			$model->attributes=$_GET['Department'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -180,7 +158,7 @@ class CompaniesController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Companies::model()->findByPk($id);
+		$model=Department::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -192,7 +170,7 @@ class CompaniesController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='companies-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='departments-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

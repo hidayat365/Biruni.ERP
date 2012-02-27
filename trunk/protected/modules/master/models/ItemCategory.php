@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "accounts".
+ * This is the model class for table "item_categories".
  *
- * The followings are the available columns in table 'accounts':
+ * The followings are the available columns in table 'item_categories':
  * @property integer $id
  * @property string $code
  * @property string $name
@@ -15,15 +15,17 @@
  * @property string $modified_on
  *
  * The followings are the available model relations:
- * @property Accounts $parent
- * @property Accounts[] $accounts
- * @property Branches $branch
+ * @property Branch $branch
+ * @property ItemCategory $parent
+ * @property ItemCategory[] $itemCategories
+ * @property Items[] $items
  */
-class Accounts extends CActiveRecord
+class ItemCategory extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Accounts the static model class
+	 * @param string $className active record class name.
+	 * @return ItemCategory the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -35,7 +37,7 @@ class Accounts extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'accounts';
+		return 'item_categories';
 	}
 
 	/**
@@ -65,9 +67,10 @@ class Accounts extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'parent' => array(self::BELONGS_TO, 'Accounts', 'parent_id'),
-			'accounts' => array(self::HAS_MANY, 'Accounts', 'parent_id'),
-			'branch' => array(self::BELONGS_TO, 'Branches', 'branch_id'),
+			'branch' => array(self::BELONGS_TO, 'Branch', 'branch_id'),
+			'parent' => array(self::BELONGS_TO, 'ItemCategory', 'parent_id'),
+			'itemCategories' => array(self::HAS_MANY, 'ItemCategory', 'parent_id'),
+			'items' => array(self::HAS_MANY, 'Item', 'category_id'),
 		);
 	}
 

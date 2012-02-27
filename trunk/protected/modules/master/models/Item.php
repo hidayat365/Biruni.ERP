@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This is the model class for table "departments".
+ * This is the model class for table "items".
  *
- * The followings are the available columns in table 'departments':
+ * The followings are the available columns in table 'items':
  * @property integer $id
  * @property string $code
  * @property string $name
- * @property integer $parent_id
+ * @property integer $category_id
  * @property integer $branch_id
  * @property integer $created_by
  * @property string $created_on
@@ -15,15 +15,15 @@
  * @property string $modified_on
  *
  * The followings are the available model relations:
- * @property Departments $parent
- * @property Departments[] $departments
- * @property Branches $branch
+ * @property Branch $branch
+ * @property ItemCategories $category
  */
-class Departments extends CActiveRecord
+class Item extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Departments the static model class
+	 * @param string $className active record class name.
+	 * @return Item the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -35,7 +35,7 @@ class Departments extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'departments';
+		return 'items';
 	}
 
 	/**
@@ -47,13 +47,13 @@ class Departments extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('code, name', 'required'),
-			array('parent_id, branch_id, created_by, modified_by', 'numerical', 'integerOnly'=>true),
+			array('category_id, branch_id, created_by, modified_by', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('name', 'length', 'max'=>255),
 			array('created_on, modified_on', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, code, name, parent_id, branch_id, created_by, created_on, modified_by, modified_on', 'safe', 'on'=>'search'),
+			array('id, code, name, category_id, branch_id, created_by, created_on, modified_by, modified_on', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,9 +65,8 @@ class Departments extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'parent' => array(self::BELONGS_TO, 'Departments', 'parent_id'),
-			'departments' => array(self::HAS_MANY, 'Departments', 'parent_id'),
-			'branch' => array(self::BELONGS_TO, 'Branches', 'branch_id'),
+			'branch' => array(self::BELONGS_TO, 'Branch', 'branch_id'),
+			'category' => array(self::BELONGS_TO, 'ItemCategories', 'category_id'),
 		);
 	}
 
@@ -80,7 +79,7 @@ class Departments extends CActiveRecord
 			'id' => 'ID',
 			'code' => 'Code',
 			'name' => 'Name',
-			'parent_id' => 'Parent',
+			'category_id' => 'Category',
 			'branch_id' => 'Branch',
 			'created_by' => 'Created By',
 			'created_on' => 'Created On',
@@ -103,7 +102,7 @@ class Departments extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('parent_id',$this->parent_id);
+		$criteria->compare('category_id',$this->category_id);
 		$criteria->compare('branch_id',$this->branch_id);
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('created_on',$this->created_on,true);

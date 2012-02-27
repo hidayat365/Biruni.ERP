@@ -1,31 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "branches".
+ * This is the model class for table "accounts".
  *
- * The followings are the available columns in table 'branches':
+ * The followings are the available columns in table 'accounts':
  * @property integer $id
  * @property string $code
  * @property string $name
  * @property integer $parent_id
+ * @property integer $branch_id
  * @property integer $created_by
  * @property string $created_on
  * @property integer $modified_by
  * @property string $modified_on
  *
  * The followings are the available model relations:
- * @property Companies[] $companies
- * @property Branches $parent
- * @property Branches[] $branches
- * @property Projects[] $projects
- * @property Departments[] $departments
- * @property Accounts[] $accounts
+ * @property Account $parent
+ * @property Account[] $accounts
+ * @property Branch $branch
  */
-class Branches extends CActiveRecord
+class Account extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Branches the static model class
+	 * @return Account the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -37,7 +35,7 @@ class Branches extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'branches';
+		return 'accounts';
 	}
 
 	/**
@@ -49,13 +47,13 @@ class Branches extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('code, name', 'required'),
-			array('parent_id, created_by, modified_by', 'numerical', 'integerOnly'=>true),
+			array('parent_id, branch_id, created_by, modified_by', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('name', 'length', 'max'=>255),
 			array('created_on, modified_on', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, code, name, parent_id, created_by, created_on, modified_by, modified_on', 'safe', 'on'=>'search'),
+			array('id, code, name, parent_id, branch_id, created_by, created_on, modified_by, modified_on', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,12 +65,9 @@ class Branches extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'companies' => array(self::HAS_MANY, 'Companies', 'branch_id'),
-			'parent' => array(self::BELONGS_TO, 'Branches', 'parent_id'),
-			'branches' => array(self::HAS_MANY, 'Branches', 'parent_id'),
-			'projects' => array(self::HAS_MANY, 'Projects', 'branch_id'),
-			'departments' => array(self::HAS_MANY, 'Departments', 'branch_id'),
-			'accounts' => array(self::HAS_MANY, 'Accounts', 'branch_id'),
+			'parent' => array(self::BELONGS_TO, 'Account', 'parent_id'),
+			'accounts' => array(self::HAS_MANY, 'Account', 'parent_id'),
+			'branch' => array(self::BELONGS_TO, 'Branch', 'branch_id'),
 		);
 	}
 
@@ -86,6 +81,7 @@ class Branches extends CActiveRecord
 			'code' => 'Code',
 			'name' => 'Name',
 			'parent_id' => 'Parent',
+			'branch_id' => 'Branch',
 			'created_by' => 'Created By',
 			'created_on' => 'Created On',
 			'modified_by' => 'Modified By',
@@ -108,6 +104,7 @@ class Branches extends CActiveRecord
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('parent_id',$this->parent_id);
+		$criteria->compare('branch_id',$this->branch_id);
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('created_on',$this->created_on,true);
 		$criteria->compare('modified_by',$this->modified_by);

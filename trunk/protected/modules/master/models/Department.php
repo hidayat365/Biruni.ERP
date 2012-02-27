@@ -1,14 +1,12 @@
 <?php
 
 /**
- * This is the model class for table "users".
+ * This is the model class for table "departments".
  *
- * The followings are the available columns in table 'users':
+ * The followings are the available columns in table 'departments':
  * @property integer $id
- * @property string $user_name
- * @property string $full_name
- * @property string $password
- * @property string $email_address
+ * @property string $code
+ * @property string $name
  * @property integer $parent_id
  * @property integer $branch_id
  * @property integer $created_by
@@ -17,14 +15,15 @@
  * @property string $modified_on
  *
  * The followings are the available model relations:
- * @property Branch $branch
  * @property Department $parent
+ * @property Department[] $departments
+ * @property Branch $branch
  */
-class Users extends CActiveRecord
+class Department extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Users the static model class
+	 * @return Department the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -36,7 +35,7 @@ class Users extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'users';
+		return 'departments';
 	}
 
 	/**
@@ -47,14 +46,14 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_name, full_name, password, email_address', 'required'),
+			array('code, name', 'required'),
 			array('parent_id, branch_id, created_by, modified_by', 'numerical', 'integerOnly'=>true),
-			array('user_name', 'length', 'max'=>20),
-			array('full_name, password, email_address', 'length', 'max'=>255),
+			array('code', 'length', 'max'=>20),
+			array('name', 'length', 'max'=>255),
 			array('created_on, modified_on', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_name, full_name, password, email_address, parent_id, branch_id, created_by, created_on, modified_by, modified_on', 'safe', 'on'=>'search'),
+			array('id, code, name, parent_id, branch_id, created_by, created_on, modified_by, modified_on', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,8 +65,9 @@ class Users extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'branch' => array(self::BELONGS_TO, 'Branch', 'branch_id'),
 			'parent' => array(self::BELONGS_TO, 'Department', 'parent_id'),
+			'departments' => array(self::HAS_MANY, 'Department', 'parent_id'),
+			'branch' => array(self::BELONGS_TO, 'Branch', 'branch_id'),
 		);
 	}
 
@@ -78,10 +78,8 @@ class Users extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_name' => 'User Name',
-			'full_name' => 'Full Name',
-			'password' => 'Password',
-			'email_address' => 'Email Address',
+			'code' => 'Code',
+			'name' => 'Name',
 			'parent_id' => 'Parent',
 			'branch_id' => 'Branch',
 			'created_by' => 'Created By',
@@ -103,10 +101,8 @@ class Users extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('user_name',$this->user_name,true);
-		$criteria->compare('full_name',$this->full_name,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('email_address',$this->email_address,true);
+		$criteria->compare('code',$this->code,true);
+		$criteria->compare('name',$this->name,true);
 		$criteria->compare('parent_id',$this->parent_id);
 		$criteria->compare('branch_id',$this->branch_id);
 		$criteria->compare('created_by',$this->created_by);

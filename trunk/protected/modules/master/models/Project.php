@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "companies".
+ * This is the model class for table "projects".
  *
- * The followings are the available columns in table 'companies':
+ * The followings are the available columns in table 'projects':
  * @property integer $id
  * @property string $code
  * @property string $name
@@ -15,15 +15,15 @@
  * @property string $modified_on
  *
  * The followings are the available model relations:
- * @property Companies $parent
- * @property Companies[] $companies
- * @property Branches $branch
+ * @property Project $parent
+ * @property Project[] $projects
+ * @property Branch $branch
  */
-class Companies extends CActiveRecord
+class Project extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Companies the static model class
+	 * @return Project the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -35,7 +35,7 @@ class Companies extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'companies';
+		return 'projects';
 	}
 
 	/**
@@ -65,9 +65,9 @@ class Companies extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'parent' => array(self::BELONGS_TO, 'Companies', 'parent_id'),
-			'companies' => array(self::HAS_MANY, 'Companies', 'parent_id'),
-			'branch' => array(self::BELONGS_TO, 'Branches', 'branch_id'),
+			'parent' => array(self::BELONGS_TO, 'Project', 'parent_id'),
+			'projects' => array(self::HAS_MANY, 'Project', 'parent_id'),
+			'branch' => array(self::BELONGS_TO, 'Branch', 'branch_id'),
 		);
 	}
 

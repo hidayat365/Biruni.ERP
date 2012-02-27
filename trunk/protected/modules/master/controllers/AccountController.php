@@ -1,6 +1,6 @@
 <?php
 
-class BranchesController extends Controller
+class AccountController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -57,14 +57,15 @@ class BranchesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Branches;
+		$model=new Account;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Branches']))
+		if(isset($_POST['Account']))
 		{
-			$model->attributes=$_POST['Branches'];
+			$model->attributes=$_POST['Account'];
+			$model->branch=Yii::app()->session->get('branch_id');
 			$model->created_by=Yii::app()->session->get('user_id');
 			$model->created_on=date('Y-m-d H:i:s');
 			$model->modified_by=Yii::app()->session->get('user_id');
@@ -90,9 +91,9 @@ class BranchesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Branches']))
+		if(isset($_POST['Account']))
 		{
-			$model->attributes=$_POST['Branches'];
+			$model->attributes=$_POST['Account'];
 			$model->modified_by=Yii::app()->session->get('user_id');
 			$model->modified_on=date('Y-m-d H:i:s');
 			if($model->save())
@@ -129,7 +130,7 @@ class BranchesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Branches');
+		$dataProvider=new CActiveDataProvider('Account');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -140,10 +141,10 @@ class BranchesController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Branches('search');
+		$model=new Account('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Branches']))
-			$model->attributes=$_GET['Branches'];
+		if(isset($_GET['Account']))
+			$model->attributes=$_GET['Account'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -157,7 +158,7 @@ class BranchesController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Branches::model()->findByPk($id);
+		$model=Account::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -169,7 +170,7 @@ class BranchesController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='branches-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='accounts-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

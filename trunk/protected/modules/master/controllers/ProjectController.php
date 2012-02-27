@@ -1,6 +1,6 @@
 <?php
 
-class AccountsController extends Controller
+class ProjectController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -57,14 +57,14 @@ class AccountsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Accounts;
+		$model=new Project;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Accounts']))
+		if(isset($_POST['Project']))
 		{
-			$model->attributes=$_POST['Accounts'];
+			$model->attributes=$_POST['Project'];
 			$model->branch=Yii::app()->session->get('branch_id');
 			$model->created_by=Yii::app()->session->get('user_id');
 			$model->created_on=date('Y-m-d H:i:s');
@@ -91,9 +91,9 @@ class AccountsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Accounts']))
+		if(isset($_POST['Project']))
 		{
-			$model->attributes=$_POST['Accounts'];
+			$model->attributes=$_POST['Project'];
 			$model->modified_by=Yii::app()->session->get('user_id');
 			$model->modified_on=date('Y-m-d H:i:s');
 			if($model->save())
@@ -130,7 +130,7 @@ class AccountsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Accounts');
+		$dataProvider=new CActiveDataProvider('Project');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -141,10 +141,10 @@ class AccountsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Accounts('search');
+		$model=new Project('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Accounts']))
-			$model->attributes=$_GET['Accounts'];
+		if(isset($_GET['Project']))
+			$model->attributes=$_GET['Project'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -158,7 +158,7 @@ class AccountsController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Accounts::model()->findByPk($id);
+		$model=Project::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -170,7 +170,7 @@ class AccountsController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='accounts-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='projects-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

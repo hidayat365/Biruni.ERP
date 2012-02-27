@@ -63,7 +63,7 @@
 			// MAIN PLUGIN FUNCTIONALITY - START
 			//#####################################################################
 			
-       // BUG 1251 FIX: http://plugins.jquery.com/project/comments/add/1251
+       // BUG 1251 FIX: http://plugins.jquery.com/projects/comments/add/1251
        // variable group_count would repeat itself on multiple calls to the plugin.
        // this would cause a conflict with multiple elements
        // changes scope of variable to global so id will be unique over n calls

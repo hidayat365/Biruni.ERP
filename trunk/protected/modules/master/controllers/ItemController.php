@@ -1,6 +1,6 @@
 <?php
 
-class ProjectsController extends Controller
+class ItemController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -26,8 +26,12 @@ class ProjectsController extends Controller
 	public function accessRules()
 	{
 		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view','create','update'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -57,19 +61,14 @@ class ProjectsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Projects;
+		$model=new Item;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Projects']))
+		if(isset($_POST['Item']))
 		{
-			$model->attributes=$_POST['Projects'];
-			$model->branch=Yii::app()->session->get('branch_id');
-			$model->created_by=Yii::app()->session->get('user_id');
-			$model->created_on=date('Y-m-d H:i:s');
-			$model->modified_by=Yii::app()->session->get('user_id');
-			$model->modified_on=date('Y-m-d H:i:s');
+			$model->attributes=$_POST['Item'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -91,11 +90,9 @@ class ProjectsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Projects']))
+		if(isset($_POST['Item']))
 		{
-			$model->attributes=$_POST['Projects'];
-			$model->modified_by=Yii::app()->session->get('user_id');
-			$model->modified_on=date('Y-m-d H:i:s');
+			$model->attributes=$_POST['Item'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -130,7 +127,7 @@ class ProjectsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Projects');
+		$dataProvider=new CActiveDataProvider('Item');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -141,10 +138,10 @@ class ProjectsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Projects('search');
+		$model=new Item('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Projects']))
-			$model->attributes=$_GET['Projects'];
+		if(isset($_GET['Item']))
+			$model->attributes=$_GET['Item'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -158,7 +155,7 @@ class ProjectsController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Projects::model()->findByPk($id);
+		$model=Item::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -170,7 +167,7 @@ class ProjectsController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='projects-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='item-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
