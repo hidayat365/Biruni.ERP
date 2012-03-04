@@ -49,13 +49,13 @@ class ItemCategory extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('code, name', 'required'),
-			array('parent_id, branch_id, created_by, modified_by', 'numerical', 'integerOnly'=>true),
+			array('parent_id, branch_id, created_by, modified_by, active', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('name', 'length', 'max'=>255),
 			array('created_on, modified_on', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, code, name, parent_id, branch_id, created_by, created_on, modified_by, modified_on', 'safe', 'on'=>'search'),
+			array('id, code, name, parent_id, branch_id, created_by, created_on, modified_by, modified_on, active', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,6 +83,7 @@ class ItemCategory extends CActiveRecord
 			'id' => 'ID',
 			'code' => 'Code',
 			'name' => 'Name',
+			'active' => 'Active',
 			'parent_id' => 'Parent',
 			'branch_id' => 'Branch',
 			'created_by' => 'Created By',

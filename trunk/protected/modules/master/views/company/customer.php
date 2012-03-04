@@ -12,6 +12,8 @@ $this->menu=array(
 	array('label'=>'Manage Customers', 'url'=>array('/master/company/customer')),
 	array('label'=>'Manage Suppliers', 'url'=>array('/master/company/supplier')),
 	array('label'=>'Manage Accounts', 'url'=>array('/master/account')),
+	array('label'=>'Manage Item Categories', 'url'=>array('/master/itemcategory')),
+	array('label'=>'Manage Items', 'url'=>array('/master/item')),
 );
 ?>
 

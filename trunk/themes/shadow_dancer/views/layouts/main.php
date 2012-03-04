@@ -34,14 +34,20 @@
             <a href='#'>My Account</a> | 
             <a href='#'>Settings</a> | 
             -->
-			<?php echo Yii::app()->user->name; ?>
-            <?php echo CHtml::link('Logout',array('/site/logout')); ?> 
+			<?php 
+				if (!Yii::app()->user->isGuest) {
+					echo Yii::app()->user->name.' | '; 
+					echo CHtml::link('Logout',array('/site/logout'));
+				}
+			?>
 		</div>
 	</div>
 	<div id="header">
 		<div id="logo">
+        	<!--
             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logo.png"></img>
-            <?php //echo CHtml::encode(Yii::app()->name); ?>
+            -->
+            <?php echo CHtml::encode(Yii::app()->name); ?>
         </div>
 	</div><!-- header -->
 
@@ -51,14 +57,16 @@
 				array('label'=>'Dashboard', 'url'=>array('/site/index')),
 				array('label'=>'Orders', 'url'=>array('/order/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='order' and $this->id=='default')?true:false),
+				array('label'=>'Project Control', 'url'=>array('/projectcontrol/default'), 'visible'=>!Yii::app()->user->isGuest
+						, 'active'=>(isset($this->module) and $this->module->id=='projectcontrol' and $this->id=='default')?true:false),
 				array('label'=>'Ledgers', 'url'=>array('/ledger/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='ledger' and $this->id=='default')?true:false),
 				array('label'=>'Master', 'url'=>array('/master/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='master' and $this->id=='default')?true:false),
 				array('label'=>'Reports', 'url'=>array('/report/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='report' and $this->id=='default')?true:false),
-				array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
 				/*
+				array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
 				array('label'=>'Form', 'url'=>array('/site/page', 'view'=>'forms')),
 				array('label'=>'Interface', 'url'=>array('/site/page', 'view'=>'interface')),				
 				array('label'=>'Buttons & Icons', 'url'=>array('/site/page', 'view'=>'buttons_and_icons')),
