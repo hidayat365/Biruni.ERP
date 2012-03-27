@@ -11,8 +11,6 @@ CREATE TABLE accounts (
     active integer DEFAULT 1
 );
 
-
-
 CREATE TABLE branches (
     id integer NOT NULL primary key auto_incement,
     code varchar(20) NOT NULL,
@@ -24,8 +22,6 @@ CREATE TABLE branches (
     modified_on date,
     active integer DEFAULT 1
 );
-
-
 
 CREATE TABLE companies (
     id integer NOT NULL primary key auto_incement,
@@ -40,8 +36,6 @@ CREATE TABLE companies (
     active integer DEFAULT 1
 );
 
-
-
 CREATE TABLE departments (
     id integer NOT NULL primary key auto_incement,
     code varchar(20) NOT NULL,
@@ -54,8 +48,6 @@ CREATE TABLE departments (
     modified_on date,
     active integer DEFAULT 1
 );
-
-
 
 CREATE TABLE item_categories (
     id integer NOT NULL primary key auto_incement,
@@ -70,8 +62,6 @@ CREATE TABLE item_categories (
     active integer DEFAULT 1
 );
 
-
-
 CREATE TABLE items (
     id integer NOT NULL primary key auto_incement,
     code varchar(20) NOT NULL,
@@ -85,8 +75,6 @@ CREATE TABLE items (
     active integer DEFAULT 1
 );
 
-
-
 CREATE TABLE order_categories (
     id integer NOT NULL primary key auto_incement,
     code varchar(20) NOT NULL,
@@ -99,8 +87,6 @@ CREATE TABLE order_categories (
     modified_on date,
     active integer DEFAULT 1
 );
-
-
 
 CREATE TABLE order_details (
     id integer NOT NULL primary key auto_incement,
@@ -116,8 +102,6 @@ CREATE TABLE order_details (
     remarks text,
     weight integer DEFAULT 50
 );
-
-
 
 CREATE TABLE orders (
     id integer NOT NULL primary key auto_incement,
@@ -143,8 +127,6 @@ CREATE TABLE orders (
     remarks5 text
 );
 
-
-
 CREATE TABLE projects (
     id integer NOT NULL primary key auto_incement,
     code varchar(20) NOT NULL,
@@ -158,8 +140,6 @@ CREATE TABLE projects (
     active integer DEFAULT 1,
     completed integer DEFAULT 0
 );
-
-
 
 CREATE TABLE users (
     id integer NOT NULL primary key auto_incement,
@@ -175,8 +155,6 @@ CREATE TABLE users (
     modified_on date,
     active integer DEFAULT 1
 );
-
-
 
 
 ALTER TABLE  accounts
