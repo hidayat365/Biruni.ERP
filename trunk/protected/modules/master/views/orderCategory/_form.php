@@ -21,42 +21,14 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
+	<!--
 	<div class="row">
 		<?php echo $form->labelEx($model,'parent_id'); ?>
 		<?php echo $form->textField($model,'parent_id'); ?>
 		<?php echo $form->error($model,'parent_id'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'branch_id'); ?>
-		<?php echo $form->textField($model,'branch_id'); ?>
-		<?php echo $form->error($model,'branch_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'created_by'); ?>
-		<?php echo $form->textField($model,'created_by'); ?>
-		<?php echo $form->error($model,'created_by'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'created_on'); ?>
-		<?php echo $form->textField($model,'created_on'); ?>
-		<?php echo $form->error($model,'created_on'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'modified_by'); ?>
-		<?php echo $form->textField($model,'modified_by'); ?>
-		<?php echo $form->error($model,'modified_by'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'modified_on'); ?>
-		<?php echo $form->textField($model,'modified_on'); ?>
-		<?php echo $form->error($model,'modified_on'); ?>
-	</div>
-
+	-->
+    
 	<div class="row">
 		<?php echo $form->labelEx($model,'active'); ?>
 		<?php echo $form->textField($model,'active'); ?>

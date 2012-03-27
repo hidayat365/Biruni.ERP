@@ -52,7 +52,7 @@ body
 
 #sidebar
 {
-	padding: 15px 15px 15px 0;
+	padding: 15px 5px 15px 0;
 }
 
 #footer
@@ -115,8 +115,8 @@ body
   margin-right:0.1em;
   margin-top:0;
   position:relative;
-  padding-left:20px;
-  padding-right:20px;
+  padding-left:10px;
+  padding-right:10px;
   height:28px;
 }
 
@@ -171,14 +171,13 @@ body
   padding-top:8px;
   margin-bottom:10px;
   text-align:center;
-  
 }
-
 .dashIconText{
 	padding-top:5px;
 	padding-bottom:10px;
 	
 }
+
 div.flash-error, div.flash-notice, div.flash-success
 {
 	padding:.8em;
@@ -697,3 +696,8 @@ ul.yiiPager a:visited
 	
 
 
+.grid-view table.items th {
+	color: white;
+	background: url("../images/el_bg.png") repeat-x scroll left top white;
+	text-align: center;
+}

@@ -44,9 +44,9 @@ div.form select
 {
 	margin: 0.2em 0 0.5em 0;
 	font-family: Verdana, 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
-	font-size: 12px;
+	font-size: 11px;
 	color: #424242;
-	padding: 6px;
+	padding: 4px 6px;
 	border: 1px solid #CCC;
 	outline: none;
 	

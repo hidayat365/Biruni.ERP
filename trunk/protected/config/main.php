@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Kelsri ERP',
+	'name'=>'Biruni ERP',
     'theme'=>'shadow_dancer',
 
 	// preloading 'log' component
@@ -17,6 +17,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.modules.master.controllers.*',
 	),
 
 	'modules'=>array(
@@ -54,9 +55,11 @@ return array(
 			),
 		),
 		'db'=>array(
-			'connectionString' => 'pgsql:host=localhost;dbname=birunierp',
-			'username' => 'postgres',
-			'password' => 'ayyasy',
+			'connectionString' => 'mysql:host=localhost;dbname=biruni_erp',
+			'username' => 'root',
+			'password' => '',
+			'tablePrefix' => '',
+			'emulatePrepare' => true,
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
@@ -84,8 +87,8 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'admin@birunierp.com',
-		'productName'=>'Kelsri ERP',
-		'companyName'=>'PT Kelsri',
+		'productName'=>'Biruni ERP',
+		'companyName'=>'Biruni Software',
 		'developerName'=>'Arung Ruang',
 		'defaultPageSize'=>50,
 		'defaultDateFormat'=>'yy-mm-dd', //format tanggal untuk jquery ui datepicker

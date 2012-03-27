@@ -4,8 +4,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create OrderCategory', 'url'=>array('create')),
-	array('label'=>'Manage OrderCategory', 'url'=>array('admin')),
+	array('label'=>'Create Order Category', 'url'=>array('create')),
+	array('label'=>'Manage Order Category', 'url'=>array('admin')),
 );
 ?>
 

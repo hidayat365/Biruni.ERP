@@ -2,6 +2,7 @@
 $this->breadcrumbs=array(
 	'Master',
 );
+$imageBase = Yii::app()->theme->baseUrl.'/images/big_icons/';
 ?>
 <h1>Administrasi Master Data</h1>
 <div class="flash-notice">Manage master data here for use in other modules throughout this application</div>
@@ -10,7 +11,7 @@ $this->breadcrumbs=array(
 
     <div class="span-10">
         <div class="dashIcon span-3">
-            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-people.png" alt="Customers" />
+        	<?php echo CHtml::link('<img src="'.$imageBase.'icon-people.png" alt="Customers" />',array('/master/company/customer')); ?>
             <div class="dashIconText"><?php echo CHtml::link('Customers',array('/master/company/customer')); ?></div>
         </div>
         <div class="span-5">
@@ -23,7 +24,7 @@ $this->breadcrumbs=array(
 
     <div class="span-10">
         <div class="dashIcon span-3">
-            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-warehouse.png" alt="Vendors" />
+        	<?php echo CHtml::link('<img src="'.$imageBase.'icon-warehouse.png" alt="Vendors" />',array('/master/company/supplier')); ?>
             <div class="dashIconText"><?php echo CHtml::link('Suppliers',array('/master/company/supplier')); ?></div>
         </div>
         <div class="span-5">
@@ -115,4 +116,5 @@ $this->breadcrumbs=array(
 </div>
 
 <div class="dashboardIcons span-21">
-&nbsp;</div>
+	&nbsp;
+</div>

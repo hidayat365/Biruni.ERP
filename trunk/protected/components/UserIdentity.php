@@ -32,6 +32,9 @@ class UserIdentity extends CUserIdentity
 			Yii::app()->session->add('branch_id', 0); 
 			Yii::app()->session->add('user_id', 0); 
 			Yii::app()->session->add('user_name', $this->username); 
+			// add states
+			//$this->setState('lastLoginTime', $lastLogin); 
+			$this->setState('isAdmin', true); 
 		}
 		return !$this->errorCode;
 	}

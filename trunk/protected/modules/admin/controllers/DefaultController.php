@@ -1,6 +1,6 @@
 <?php
 
-class DefaultController extends Controller
+class DefaultController extends BiruniController
 {
 	/**
 	 * @return array action filters
@@ -41,4 +41,5 @@ class DefaultController extends Controller
 	{
 		$this->render('index');
 	}
+
 }

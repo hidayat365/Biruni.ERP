@@ -42,13 +42,21 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'code',
+		array(
+			'name'=>'code',
+			'htmlOptions'=>array('width'=>100),
+		),
 		'name',
+		array(
+			'name'=>'category_id',
+            'filter'=>CHtml::listData(AccountCategory::model()->findAll(), 'id', 'name'), 
+			'value'=>'AccountCategory::model()->findByPk($data->category_id)->name',
+		),
+		/*
+		'id',
 		'parent_id',
 		'branch_id',
 		'created_by',
-		/*
 		'created_on',
 		'modified_by',
 		'modified_on',

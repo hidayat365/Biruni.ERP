@@ -1,6 +1,6 @@
 <?php
 
-class BranchController extends Controller
+class BranchController extends BiruniController
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning

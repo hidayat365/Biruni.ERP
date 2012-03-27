@@ -20,6 +20,17 @@
 		
 		<?php
 			$this->beginWidget('zii.widgets.CPortlet', array(
+				'title'=>'<span class="icon icon-sitemap_color">Administration</span>',
+			));
+			$this->widget('zii.widgets.CMenu', array(
+				'items'=>$this->adminMenu,
+				'htmlOptions'=>array('class'=>'operations'),
+			));
+			$this->endWidget();
+		?>
+		
+		<?php
+			$this->beginWidget('zii.widgets.CPortlet', array(
 				'title'=>'<span class="icon icon-user">Account Details</span>',
 			));
 			?>

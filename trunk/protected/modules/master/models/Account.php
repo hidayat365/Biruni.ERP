@@ -9,6 +9,7 @@
  * @property string $name
  * @property integer $parent_id
  * @property integer $branch_id
+ * @property integer $category_id
  * @property integer $created_by
  * @property string $created_on
  * @property integer $modified_by
@@ -46,14 +47,16 @@ class Account extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('code, name', 'required'),
-			array('parent_id, branch_id, created_by, modified_by, active', 'numerical', 'integerOnly'=>true),
+			array('code, name, category_id, active, checking', 'required'),
+			array('parent_id, branch_id, category_id, created_by, modified_by, active, checking', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('name', 'length', 'max'=>255),
 			array('created_on, modified_on', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, code, name, parent_id, branch_id, created_by, created_on, modified_by, modified_on, active', 'safe', 'on'=>'search'),
+			array('id, code, name, parent_id, branch_id, category_id, created_by, created_on, modified_by, modified_on, active, checking', 'safe', 'on'=>'search'),
+			// validator
+			array('parent_id','compare','compareAttribute'=>'id','operator'=>'!=', 'allowEmpty'=>false , 'message'=>'{attribute} must not equal to {compareAttribute}.', 'on'=>'create, update'),
 		);
 	}
 
@@ -68,6 +71,7 @@ class Account extends CActiveRecord
 			'parent' => array(self::BELONGS_TO, 'Account', 'parent_id'),
 			'accounts' => array(self::HAS_MANY, 'Account', 'parent_id'),
 			'branch' => array(self::BELONGS_TO, 'Branch', 'branch_id'),
+			'category' => array(self::BELONGS_TO, 'AccountCategory', 'category_id'),
 		);
 	}
 
@@ -81,8 +85,10 @@ class Account extends CActiveRecord
 			'code' => 'Code',
 			'name' => 'Name',
 			'active' => 'Active',
+			'checking' => 'Checking Account',
 			'parent_id' => 'Parent',
 			'branch_id' => 'Branch',
+			'category_id' => 'Category',
 			'created_by' => 'Created By',
 			'created_on' => 'Created On',
 			'modified_by' => 'Modified By',
@@ -106,6 +112,7 @@ class Account extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('parent_id',$this->parent_id);
 		$criteria->compare('branch_id',$this->branch_id);
+		$criteria->compare('category_id',$this->category_id);
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('created_on',$this->created_on,true);
 		$criteria->compare('modified_by',$this->modified_by);

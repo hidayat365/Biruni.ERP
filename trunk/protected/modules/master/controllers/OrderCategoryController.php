@@ -1,6 +1,6 @@
 <?php
 
-class OrderCategoryController extends Controller
+class OrderCategoryController extends BiruniController
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -69,6 +69,11 @@ class OrderCategoryController extends Controller
 		if(isset($_POST['OrderCategory']))
 		{
 			$model->attributes=$_POST['OrderCategory'];
+			$model->branch=Yii::app()->session->get('branch_id');
+			$model->created_by=Yii::app()->session->get('user_id');
+			$model->created_on=date('Y-m-d H:i:s');
+			$model->modified_by=Yii::app()->session->get('user_id');
+			$model->modified_on=date('Y-m-d H:i:s');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -93,6 +98,8 @@ class OrderCategoryController extends Controller
 		if(isset($_POST['OrderCategory']))
 		{
 			$model->attributes=$_POST['OrderCategory'];
+			$model->modified_by=Yii::app()->session->get('user_id');
+			$model->modified_on=date('Y-m-d H:i:s');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

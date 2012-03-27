@@ -1,6 +1,6 @@
 <?php
 
-class AccountController extends Controller
+class AccountController extends BiruniController
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -58,14 +58,11 @@ class AccountController extends Controller
 	public function actionCreate()
 	{
 		$model=new Account;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+		$this->performAjaxValidation($model);
 		if(isset($_POST['Account']))
 		{
 			$model->attributes=$_POST['Account'];
-			$model->branch=Yii::app()->session->get('branch_id');
+			$model->branch_id=Yii::app()->session->get('branch_id');
 			$model->created_by=Yii::app()->session->get('user_id');
 			$model->created_on=date('Y-m-d H:i:s');
 			$model->modified_by=Yii::app()->session->get('user_id');
@@ -87,10 +84,7 @@ class AccountController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
+		$this->performAjaxValidation($model);
 		if(isset($_POST['Account']))
 		{
 			$model->attributes=$_POST['Account'];

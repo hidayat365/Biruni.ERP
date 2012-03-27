@@ -13,20 +13,22 @@ $this->menu=array(
 );
 ?>
 
-<h1>View OrderCategory #<?php echo $model->id; ?></h1>
+<h1>View OrderCategory [<?php echo $model->code; ?>]</h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
 		'code',
 		'name',
+		'active',
+		/*
+		'id',
 		'parent_id',
 		'branch_id',
 		'created_by',
 		'created_on',
 		'modified_by',
 		'modified_on',
-		'active',
+		*/
 	),
 )); ?>
