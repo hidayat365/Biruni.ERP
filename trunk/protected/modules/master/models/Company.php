@@ -13,6 +13,7 @@
  * @property string $created_on
  * @property integer $modified_by
  * @property string $modified_on
+ * @property string $type
  *
  * The followings are the available model relations:
  * @property Company $parent
@@ -35,7 +36,7 @@ class Company extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'companies';
+		return 'COMPANIES';
 	}
 
 	/**
@@ -50,10 +51,11 @@ class Company extends CActiveRecord
 			array('parent_id, branch_id, created_by, modified_by, active', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('name', 'length', 'max'=>255),
+			array('type', 'length', 'max'=>1),
 			array('created_on, modified_on', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, code, name, parent_id, branch_id, created_by, created_on, modified_by, modified_on, active', 'safe', 'on'=>'search'),
+			array('id, code, name, type, parent_id, branch_id, created_by, created_on, modified_by, modified_on, active', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -80,6 +82,7 @@ class Company extends CActiveRecord
 			'id' => 'ID',
 			'code' => 'Code',
 			'name' => 'Name',
+			'type' => 'Type',
 			'active' => 'Active',
 			'parent_id' => 'Parent',
 			'branch_id' => 'Branch',
@@ -104,6 +107,7 @@ class Company extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('type',$this->name,true);
 		$criteria->compare('parent_id',$this->parent_id);
 		$criteria->compare('branch_id',$this->branch_id);
 		$criteria->compare('created_by',$this->created_by);

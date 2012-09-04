@@ -55,7 +55,7 @@ class CompanyController extends BiruniController
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($type)
 	{
 		$model=new Company;
 
