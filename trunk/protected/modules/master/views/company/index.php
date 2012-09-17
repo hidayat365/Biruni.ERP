@@ -1,12 +1,15 @@
 <?php
+/* @var $this CompanyController */
+/* @var $dataProvider CActiveDataProvider */
+
 $this->breadcrumbs=array(
 	'Master'=>array('/master'),
 	'Companies',
 );
 
 $this->menu=array(
-	array('label'=>'Create Customer', 'url'=>array('/master/company/create','customer')),
-	array('label'=>'Create Supplier', 'url'=>array('/master/company/create','supplier')),
+	array('label'=>'Create Customer', 'url'=>array('/master/company/create','type'=>'customer')),
+	array('label'=>'Create Supplier', 'url'=>array('/master/company/create','type'=>'supplier')),
 );
 ?>
 
