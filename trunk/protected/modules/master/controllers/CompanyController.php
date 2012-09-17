@@ -55,17 +55,18 @@ class CompanyController extends BiruniController
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($type)
+	public function actionCreate($type='customer')
 	{
-		$model=new Company;
+		$class=ucwords(strtolower($type));
+		$model=new $class;
+		$model->branch=Yii::app()->session->get('branch_id');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Company']))
+		if(isset($_POST[$class]))
 		{
-			$model->attributes=$_POST['Company'];
-			$model->branch=Yii::app()->session->get('branch_id');
+			$model->attributes=$_POST[$class];
 			$model->created_by=Yii::app()->session->get('user_id');
 			$model->created_on=date('Y-m-d H:i:s');
 			$model->modified_by=Yii::app()->session->get('user_id');
@@ -74,6 +75,7 @@ class CompanyController extends BiruniController
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
+		// render page
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -91,9 +93,9 @@ class CompanyController extends BiruniController
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Company']))
+		if(isset($_POST[$model->companyType()]))
 		{
-			$model->attributes=$_POST['Company'];
+			$model->attributes=$_POST[$model->companyType()];
 			$model->modified_by=Yii::app()->session->get('user_id');
 			$model->modified_on=date('Y-m-d H:i:s');
 			if($model->save())
@@ -128,9 +130,10 @@ class CompanyController extends BiruniController
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($type='customer')
 	{
-		$dataProvider=new CActiveDataProvider('Company');
+		$class=ucwords(strtolower($type));
+		$dataProvider=new CActiveDataProvider($class);
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -141,7 +144,15 @@ class CompanyController extends BiruniController
 	 */
 	public function actionCustomer()
 	{
-		$dataProvider=new CActiveDataProvider('Company');
+		$dataProvider=new CActiveDataProvider('Customer',array(
+			'criteria'=>array(
+				'condition'=>'type=\'C\'',
+				'order'=>'name',
+			),
+			'pagination'=>array(
+				'pageSize'=>30,
+			),
+		));
 		$this->render('customer',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -152,7 +163,15 @@ class CompanyController extends BiruniController
 	 */
 	public function actionSupplier()
 	{
-		$dataProvider=new CActiveDataProvider('Company');
+		$dataProvider=new CActiveDataProvider('Supplier',array(
+			'criteria'=>array(
+				'condition'=>'type=\'S\'',
+				'order'=>'name',
+			),
+			'pagination'=>array(
+				'pageSize'=>20,
+			),
+		));
 		$this->render('supplier',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -161,12 +180,13 @@ class CompanyController extends BiruniController
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionAdmin($type='customer')
 	{
-		$model=new Company('search');
+		$class=ucwords(strtolower($type));
+		$model=new $class('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Company']))
-			$model->attributes=$_GET['Company'];
+		if(isset($_GET[$class]))
+			$model->attributes=$_GET[$class];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -192,7 +212,7 @@ class CompanyController extends BiruniController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='companies-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='company-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

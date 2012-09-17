@@ -1,12 +1,15 @@
 <?php
+/* @var $this CompanyController */
+/* @var $model Company */
+
 $this->breadcrumbs=array(
 	'Companies'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Companies', 'url'=>array('index')),
-	array('label'=>'Create Companies', 'url'=>array('create')),
+	array('label'=>'List Company', 'url'=>array('index')),
+	array('label'=>'Create Company', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -15,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('companies-grid', {
+	$.fn.yiiGridView.update('company-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -38,7 +41,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'companies-grid',
+	'id'=>'company-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
@@ -52,6 +55,26 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'created_on',
 		'modified_by',
 		'modified_on',
+		'active',
+		'type',
+		'phone_office',
+		'phone_alternate',
+		'phone_fax',
+		'employees',
+		'annual_revenue',
+		'industry',
+		'ownership',
+		'website',
+		'billing_address_street',
+		'billing_address_city',
+		'billing_address_state',
+		'billing_address_postalcode',
+		'billing_address_country',
+		'shipping_address_street',
+		'shipping_address_city',
+		'shipping_address_state',
+		'shipping_address_postalcode',
+		'shipping_address_country',
 		*/
 		array(
 			'class'=>'CButtonColumn',

@@ -1,15 +1,18 @@
 <?php
+/* @var $this CompanyController */
+/* @var $model Company */
+
 $this->breadcrumbs=array(
 	'Companies'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Companies', 'url'=>array('index')),
-	array('label'=>'Manage Companies', 'url'=>array('admin')),
+	array('label'=>'List Company', 'url'=>array('index')),
+	array('label'=>'Manage Company', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Companies</h1>
+<h1>Create Company</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

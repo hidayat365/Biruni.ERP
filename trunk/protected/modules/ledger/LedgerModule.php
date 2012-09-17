@@ -11,6 +11,7 @@ class LedgerModule extends CWebModule
 		$this->setImport(array(
 			'ledger.models.*',
 			'ledger.components.*',
+			'ledger.controllers.*',
 		));
 	}
 

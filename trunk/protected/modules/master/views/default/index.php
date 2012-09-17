@@ -50,17 +50,18 @@ $imageBase = Yii::app()->theme->baseUrl.'/images/big_icons/';
 
     <div class="span-10">
         <div class="dashIcon span-3">
-            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-shopping-cart3.png" alt="Order Categories" />
-            <div class="dashIconText "><?php echo CHtml::link('Order Categories',array('/master/ordercategory')); ?></div>
+            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-building.png" alt="Departments" />
+            <div class="dashIconText "><?php echo CHtml::link('Departments',array('/master/department')); ?></div>
         </div>
         <div class="span-5">
             <p>
-                <strong><?php echo CHtml::link('Order Category List',array('/master/ordercategory')); ?></strong>
-                <br>Manage Order Type/Category list here, including add new order category, edit or delete existing order category data.
+                <strong><?php echo CHtml::link('Department List',array('/master/department')); ?></strong>
+                <br>Manage Department list here, including add new department, edit or delete existing department data.
             </p>
 		</div>
 	</div>
 
+    <!--
     <div class="span-10">
         <div class="dashIcon span-3">
             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-barcode2.png" alt="Item Category" />
@@ -89,19 +90,6 @@ $imageBase = Yii::app()->theme->baseUrl.'/images/big_icons/';
 
     <div class="span-10">
         <div class="dashIcon span-3">
-            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-building.png" alt="Departments" />
-            <div class="dashIconText "><?php echo CHtml::link('Departments',array('/master/department')); ?></div>
-        </div>
-        <div class="span-5">
-            <p>
-                <strong><?php echo CHtml::link('Department List',array('/master/department')); ?></strong>
-                <br>Manage Department list here, including add new department, edit or delete existing department data.
-            </p>
-		</div>
-	</div>
-
-    <div class="span-10">
-        <div class="dashIcon span-3">
             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-address-book.png" alt="Chart of Account" />
             <div class="dashIconText "><?php echo CHtml::link('Chart of Accounts',array('/master/account')); ?></div>
         </div>
@@ -112,6 +100,20 @@ $imageBase = Yii::app()->theme->baseUrl.'/images/big_icons/';
             </p>
 		</div>
 	</div>
+
+    <div class="span-10">
+        <div class="dashIcon span-3">
+            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-shopping-cart3.png" alt="Order Categories" />
+            <div class="dashIconText "><?php echo CHtml::link('Order Categories',array('/master/ordercategory')); ?></div>
+        </div>
+        <div class="span-5">
+            <p>
+                <strong><?php echo CHtml::link('Order Category List',array('/master/ordercategory')); ?></strong>
+                <br>Manage Order Type/Category list here, including add new order category, edit or delete existing order category data.
+            </p>
+		</div>
+	</div>
+    -->
 
 </div>
 

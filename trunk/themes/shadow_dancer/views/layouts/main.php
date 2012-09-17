@@ -62,20 +62,24 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Dashboard', 'url'=>array('/site/index')),
-				array('label'=>'Order Entry', 'url'=>array('/order/default'), 'visible'=>!Yii::app()->user->isGuest
+				array('label'=>'Order', 'url'=>array('/order/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='order' and $this->id=='default')?true:false),
-				array('label'=>'Inventory Control', 'url'=>array('/inventory/default'), 'visible'=>!Yii::app()->user->isGuest
+				array('label'=>'Inventory', 'url'=>array('/inventory/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='inventory' and $this->id=='default')?true:false),
-				array('label'=>'Project Control', 'url'=>array('/project/default'), 'visible'=>!Yii::app()->user->isGuest
+				array('label'=>'Projects', 'url'=>array('/project/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='project' and $this->id=='default')?true:false),
 				array('label'=>'Manufacturing', 'url'=>array('/manufacturing/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='manufacturing' and $this->id=='default')?true:false),
 				array('label'=>'Ledgers', 'url'=>array('/ledger/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='ledger' and $this->id=='default')?true:false),
-				array('label'=>'Master', 'url'=>array('/master/default'), 'visible'=>!Yii::app()->user->isGuest
-						, 'active'=>(isset($this->module) and $this->module->id=='master' and $this->id=='default')?true:false),
 				array('label'=>'Reports', 'url'=>array('/report/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='report' and $this->id=='default')?true:false),
+				array('label'=>'Accounts Receivable', 'url'=>array('/ledger/receivable'), 'visible'=>!Yii::app()->user->isGuest
+						, 'active'=>(isset($this->module) and $this->module->id=='ledger' and $this->id=='receivable')?true:false),
+				array('label'=>'Accounts Payable', 'url'=>array('/ledger/payable'), 'visible'=>!Yii::app()->user->isGuest
+						, 'active'=>(isset($this->module) and $this->module->id=='ledger' and $this->id=='payable')?true:false),
+				array('label'=>'Master', 'url'=>array('/master/default'), 'visible'=>!Yii::app()->user->isGuest
+						, 'active'=>(isset($this->module) and $this->module->id=='master')?true:false),
 				/*
 				array('label'=>'Interface', 'url'=>array('/site/page', 'view'=>'interface')),				
 				array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
@@ -95,9 +99,8 @@
 	<?php echo $content; ?>
 
 	<div id="footer">
-		Copyright &copy; 2011-<?php print date('Y'); ?> <?php print Yii::app()->params['developerName']; ?>.
-        Developed for <?php print Yii::app()->params['companyName']; ?>. All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?> - Theme by <a href="http://webapplicationthemes.com">webapplicationthemes.com</a> - All Rights Reserved.
+		Copyright &copy; 2011-<?php print date('Y'); ?> <?php print Yii::app()->params['developerName']; ?>.<br/>
+        Developed for <?php print Yii::app()->params['companyName']; ?>. All Rights Reserved.
 	</div><!-- footer -->
 
 </div><!-- page -->
