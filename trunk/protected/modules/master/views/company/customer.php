@@ -2,16 +2,16 @@
 $this->breadcrumbs=array(
 	'Master'=>array('/master'),
 	'Companies'=>array('index'),
-	'Customers',
+	'Companies',
 );
 
 $this->menu=array(
-	array('label'=>'Create Customer', 'url'=>array('create')),
-	array('label'=>'Manage Customers', 'url'=>array('/master/company/customer')),
+	array('label'=>'Create Company', 'url'=>array('create')),
+	array('label'=>'Manage Companies', 'url'=>array('/master/company')),
 );
 ?>
 
-<h1>Customer List</h1>
+<h1>Company List</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

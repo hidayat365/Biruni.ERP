@@ -130,10 +130,20 @@ class DepartmentController extends BiruniController
 	 */
 	public function actionIndex()
 	{
+		$model=new Department('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Department']))
+			$model->attributes=$_GET['Department'];
+
+		$this->render('index',array(
+			'model'=>$model,
+		));
+		/*
 		$dataProvider=new CActiveDataProvider('Department');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+		*/
 	}
 
 	/**

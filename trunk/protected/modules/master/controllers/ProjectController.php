@@ -130,9 +130,13 @@ class ProjectController extends BiruniController
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Project');
+		$model=new Project('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Project']))
+			$model->attributes=$_GET['Project'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

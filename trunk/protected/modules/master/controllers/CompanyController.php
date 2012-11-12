@@ -7,6 +7,7 @@ class CompanyController extends BiruniController
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	public $modelName='Company';
 	
 	/**
 	 * @return array action filters
@@ -55,9 +56,9 @@ class CompanyController extends BiruniController
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($type='customer')
+	public function actionCreate()
 	{
-		$class=ucwords(strtolower($type));
+		$class=$this->modelName;
 		$model=new $class;
 		$model->branch=Yii::app()->session->get('branch_id');
 
@@ -92,7 +93,7 @@ class CompanyController extends BiruniController
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		print_r($model->companyType());
 		if(isset($_POST[$model->companyType()]))
 		{
 			$model->attributes=$_POST[$model->companyType()];
@@ -130,9 +131,9 @@ class CompanyController extends BiruniController
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex($type='customer')
+	public function actionIndex()
 	{
-		$class=ucwords(strtolower($type));
+		$class=$this->modelName;
 		$dataProvider=new CActiveDataProvider($class);
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
@@ -140,49 +141,11 @@ class CompanyController extends BiruniController
 	}
 
 	/**
-	 * Lists all customers.
-	 */
-	public function actionCustomer()
-	{
-		$dataProvider=new CActiveDataProvider('Customer',array(
-			'criteria'=>array(
-				'condition'=>'type=\'C\'',
-				'order'=>'name',
-			),
-			'pagination'=>array(
-				'pageSize'=>30,
-			),
-		));
-		$this->render('customer',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
-	 * Lists all customers.
-	 */
-	public function actionSupplier()
-	{
-		$dataProvider=new CActiveDataProvider('Supplier',array(
-			'criteria'=>array(
-				'condition'=>'type=\'S\'',
-				'order'=>'name',
-			),
-			'pagination'=>array(
-				'pageSize'=>20,
-			),
-		));
-		$this->render('supplier',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin($type='customer')
+	public function actionAdmin()
 	{
-		$class=ucwords(strtolower($type));
+		$class=$this->modelName;
 		$model=new $class('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET[$class]))
@@ -200,7 +163,8 @@ class CompanyController extends BiruniController
 	 */
 	public function loadModel($id)
 	{
-		$model=Company::model()->findByPk($id);
+		$class=$this->modelName;
+		$model=$class::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -212,7 +176,7 @@ class CompanyController extends BiruniController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='company-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']===strtolower($this->modelName).'-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

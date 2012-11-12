@@ -62,6 +62,7 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Dashboard', 'url'=>array('/site/index')),
+				/*
 				array('label'=>'Order', 'url'=>array('/order/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='order' and $this->id=='default')?true:false),
 				array('label'=>'Inventory', 'url'=>array('/inventory/default'), 'visible'=>!Yii::app()->user->isGuest
@@ -74,6 +75,7 @@
 						, 'active'=>(isset($this->module) and $this->module->id=='ledger' and $this->id=='default')?true:false),
 				array('label'=>'Reports', 'url'=>array('/report/default'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='report' and $this->id=='default')?true:false),
+				*/
 				array('label'=>'Accounts Receivable', 'url'=>array('/ledger/receivable'), 'visible'=>!Yii::app()->user->isGuest
 						, 'active'=>(isset($this->module) and $this->module->id=='ledger' and $this->id=='receivable')?true:false),
 				array('label'=>'Accounts Payable', 'url'=>array('/ledger/payable'), 'visible'=>!Yii::app()->user->isGuest

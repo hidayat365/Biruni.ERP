@@ -28,21 +28,52 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'doc_number'); ?>
+		<?php echo $form->textField($model,'doc_number',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->error($model,'doc_number'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'doc_duedate'); ?>
+		<?php echo $form->textField($model,'doc_duedate'); ?>
+		<?php echo $form->error($model,'doc_duedate'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'journal_value'); ?>
 		<?php echo $form->textField($model,'journal_value',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'journal_value'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'journal_value_real'); ?>
-		<?php echo $form->textField($model,'journal_value_real',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'journal_value_real'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>1000)); ?>
 		<?php echo $form->error($model,'description'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'company_id'); ?>
+		<?php echo $form->textField($model,'company_id'); ?>
+		<?php echo $form->error($model,'company_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'project_id'); ?>
+		<?php echo $form->textField($model,'project_id'); ?>
+		<?php echo $form->error($model,'project_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'department_id'); ?>
+		<?php echo $form->textField($model,'department_id'); ?>
+		<?php echo $form->error($model,'department_id'); ?>
+	</div>
+
+	<!--
+	<div class="row">
+		<?php echo $form->labelEx($model,'journal_value_real'); ?>
+		<?php echo $form->textField($model,'journal_value_real',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->error($model,'journal_value_real'); ?>
 	</div>
 
 	<div class="row">
@@ -82,27 +113,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'company_id'); ?>
-		<?php echo $form->textField($model,'company_id'); ?>
-		<?php echo $form->error($model,'company_id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'account_id'); ?>
 		<?php echo $form->textField($model,'account_id'); ?>
 		<?php echo $form->error($model,'account_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'project_id'); ?>
-		<?php echo $form->textField($model,'project_id'); ?>
-		<?php echo $form->error($model,'project_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'department_id'); ?>
-		<?php echo $form->textField($model,'department_id'); ?>
-		<?php echo $form->error($model,'department_id'); ?>
 	</div>
 
 	<div class="row">
@@ -159,17 +172,7 @@
 		<?php echo $form->error($model,'doc_status'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'doc_number'); ?>
-		<?php echo $form->textField($model,'doc_number',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'doc_number'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'doc_duedate'); ?>
-		<?php echo $form->textField($model,'doc_duedate'); ?>
-		<?php echo $form->error($model,'doc_duedate'); ?>
-	</div>
+    -->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

@@ -11,12 +11,12 @@ $imageBase = Yii::app()->theme->baseUrl.'/images/big_icons/';
 
     <div class="span-10">
         <div class="dashIcon span-3">
-        	<?php echo CHtml::link('<img src="'.$imageBase.'icon-people.png" alt="Customers" />',array('/master/company/customer')); ?>
-            <div class="dashIconText"><?php echo CHtml::link('Customers',array('/master/company/customer')); ?></div>
+        	<?php echo CHtml::link('<img src="'.$imageBase.'icon-people.png" alt="Customers" />',array('/master/customer/customer')); ?>
+            <div class="dashIconText"><?php echo CHtml::link('Customers',array('/master/customer')); ?></div>
         </div>
         <div class="span-5">
             <p>
-                <strong><?php echo CHtml::link('Customer List',array('/master/company/customer')); ?></strong>
+                <strong><?php echo CHtml::link('Customer List',array('/master/customer')); ?></strong>
                 <br>Manage Customers list here, including add new customer, edit or delete existing customer data.
             </p>
         </div>
@@ -24,13 +24,26 @@ $imageBase = Yii::app()->theme->baseUrl.'/images/big_icons/';
 
     <div class="span-10">
         <div class="dashIcon span-3">
-        	<?php echo CHtml::link('<img src="'.$imageBase.'icon-warehouse.png" alt="Vendors" />',array('/master/company/supplier')); ?>
-            <div class="dashIconText"><?php echo CHtml::link('Suppliers',array('/master/company/supplier')); ?></div>
+        	<?php echo CHtml::link('<img src="'.$imageBase.'icon-warehouse.png" alt="Vendors" />',array('/master/supplier')); ?>
+            <div class="dashIconText"><?php echo CHtml::link('Suppliers',array('/master/supplier')); ?></div>
         </div>
         <div class="span-5">
             <p>
-                <strong><?php echo CHtml::link('Supplier List',array('/master/company/supplier')); ?></strong>
+                <strong><?php echo CHtml::link('Supplier List',array('/master/supplier')); ?></strong>
                 <br>Manage Supplier list here, including add new supplier, edit or delete existing supplier data.
+            </p>
+		</div>
+	</div>
+
+    <div class="span-10">
+        <div class="dashIcon span-3">
+            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-building.png" alt="Departments" />
+            <div class="dashIconText "><?php echo CHtml::link('Departments',array('/master/department')); ?></div>
+        </div>
+        <div class="span-5">
+            <p>
+                <strong><?php echo CHtml::link('Department List',array('/master/department')); ?></strong>
+                <br>Manage Department list here, including add new department, edit or delete existing department data.
             </p>
 		</div>
 	</div>
@@ -50,13 +63,26 @@ $imageBase = Yii::app()->theme->baseUrl.'/images/big_icons/';
 
     <div class="span-10">
         <div class="dashIcon span-3">
-            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-building.png" alt="Departments" />
-            <div class="dashIconText "><?php echo CHtml::link('Departments',array('/master/department')); ?></div>
+            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-tools2.png" alt="Project Types" />
+            <div class="dashIconText "><?php echo CHtml::link('Project Types',array('/master/projectType')); ?></div>
         </div>
         <div class="span-5">
             <p>
-                <strong><?php echo CHtml::link('Department List',array('/master/department')); ?></strong>
-                <br>Manage Department list here, including add new department, edit or delete existing department data.
+                <strong><?php echo CHtml::link('Project Type List',array('/master/projectType')); ?></strong>
+                <br>Manage Project Type list here, including add new project, edit or delete existing project data.
+            </p>
+		</div>
+	</div>
+
+    <div class="span-10">
+        <div class="dashIcon span-3">
+            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/big_icons/icon-tools2.png" alt="Project Categories" />
+            <div class="dashIconText "><?php echo CHtml::link('Project Categories',array('/master/projectCategory')); ?></div>
+        </div>
+        <div class="span-5">
+            <p>
+                <strong><?php echo CHtml::link('Project Category List',array('/master/projectCategory')); ?></strong>
+                <br>Manage Project Category list here, including add new project, edit or delete existing project data.
             </p>
 		</div>
 	</div>

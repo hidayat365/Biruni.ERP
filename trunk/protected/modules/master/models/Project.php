@@ -9,6 +9,8 @@
  * @property string $name
  * @property integer $parent_id
  * @property integer $branch_id
+ * @property integer $type_id
+ * @property integer $category_id
  * @property integer $created_by
  * @property string $created_on
  * @property integer $modified_by
@@ -47,13 +49,13 @@ class Project extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('code, name', 'required'),
-			array('parent_id, branch_id, created_by, modified_by, active', 'numerical', 'integerOnly'=>true),
+			array('parent_id, branch_id, created_by, modified_by, active, completed, type_id, category_id', 'numerical', 'integerOnly'=>true),
 			array('code', 'length', 'max'=>20),
 			array('name', 'length', 'max'=>255),
-			array('created_on, modified_on', 'safe'),
+			array('created_on, modified_on, type_id, category_id', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, code, name, parent_id, branch_id, created_by, created_on, modified_by, modified_on, active', 'safe', 'on'=>'search'),
+			array('id, code, name, parent_id, branch_id, created_by, created_on, modified_by, modified_on, active, completed, type_id, category_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,8 +68,10 @@ class Project extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'parent' => array(self::BELONGS_TO, 'Project', 'parent_id'),
-			'projects' => array(self::HAS_MANY, 'Project', 'parent_id'),
 			'branch' => array(self::BELONGS_TO, 'Branch', 'branch_id'),
+			'type' => array(self::BELONGS_TO, 'ProjectType', 'type_id'),
+			'category' => array(self::BELONGS_TO, 'ProjectCategory', 'category_id'),
+			'projects' => array(self::HAS_MANY, 'Project', 'parent_id'),
 		);
 	}
 
@@ -81,6 +85,8 @@ class Project extends CActiveRecord
 			'code' => 'Code',
 			'name' => 'Name',
 			'active' => 'Active',
+			'type_id' => 'Type',
+			'category_id' => 'Category',
 			'parent_id' => 'Parent',
 			'branch_id' => 'Branch',
 			'created_by' => 'Created By',
@@ -104,6 +110,8 @@ class Project extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('type_id',$this->parent_id);
+		$criteria->compare('category_id',$this->branch_id);
 		$criteria->compare('parent_id',$this->parent_id);
 		$criteria->compare('branch_id',$this->branch_id);
 		$criteria->compare('created_by',$this->created_by);

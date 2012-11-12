@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Create Supplier', 'url'=>array('create')),
-	array('label'=>'Manage Supplier', 'url'=>array('/master/company/supplier')),
+	array('label'=>'Manage Supplier', 'url'=>array('/master/supplier')),
 );
 ?>
 

@@ -60,9 +60,13 @@ class Company extends CActiveRecord
 	{
 		$this->active='1';
 	}
+	
+	/**
+	 * @return string the company type correspond to class name
+	 */
 	public function companyType()
 	{
-		return $this->type=='C' ? 'Supplier' : ( $this->type=='S' ? 'Supplier':'Company' ) ;
+		return $this->type=='C' ? 'Customer' : ( $this->type=='S' ? 'Supplier':'Company' ) ;
 	}
 
 	/**
