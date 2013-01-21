@@ -1,5 +1,5 @@
 CREATE TABLE accounts (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     code varchar(20) NOT NULL,
     name varchar(255) NOT NULL,
     parent_id integer,
@@ -12,7 +12,7 @@ CREATE TABLE accounts (
 );
 
 CREATE TABLE branches (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     code varchar(20) NOT NULL,
     name varchar(255) NOT NULL,
     parent_id integer,
@@ -24,7 +24,7 @@ CREATE TABLE branches (
 );
 
 CREATE TABLE companies (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     code varchar(20) NOT NULL,
     name varchar(255) NOT NULL,
     parent_id integer,
@@ -37,7 +37,7 @@ CREATE TABLE companies (
 );
 
 CREATE TABLE departments (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     code varchar(20) NOT NULL,
     name varchar(255) NOT NULL,
     parent_id integer,
@@ -50,7 +50,7 @@ CREATE TABLE departments (
 );
 
 CREATE TABLE item_categories (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     code varchar(20) NOT NULL,
     name varchar(255) NOT NULL,
     parent_id integer,
@@ -63,7 +63,7 @@ CREATE TABLE item_categories (
 );
 
 CREATE TABLE items (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     code varchar(20) NOT NULL,
     name varchar(255) NOT NULL,
     category_id integer,
@@ -76,7 +76,7 @@ CREATE TABLE items (
 );
 
 CREATE TABLE order_categories (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     code varchar(20) NOT NULL,
     name varchar(255) NOT NULL,
     parent_id integer,
@@ -89,7 +89,7 @@ CREATE TABLE order_categories (
 );
 
 CREATE TABLE order_details (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     item_id integer,
     order_id integer,
     detail_id integer,
@@ -104,7 +104,7 @@ CREATE TABLE order_details (
 );
 
 CREATE TABLE orders (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     parent_id integer,
     branch_id integer,
     category_id integer,
@@ -128,7 +128,7 @@ CREATE TABLE orders (
 );
 
 CREATE TABLE projects (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     code varchar(20) NOT NULL,
     name varchar(255) NOT NULL,
     parent_id integer,
@@ -142,7 +142,7 @@ CREATE TABLE projects (
 );
 
 CREATE TABLE users (
-    id integer NOT NULL primary key auto_incement,
+    id integer NOT NULL primary key auto_increment,
     user_name varchar(20) NOT NULL,
     full_name varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
